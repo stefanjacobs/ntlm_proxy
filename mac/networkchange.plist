@@ -4,12 +4,12 @@
 <plist version="1.0">
 <dict>
   <key>Label</key>
-  <string>networkchange</string>
+  <string>custom.networkchange</string>
   <key>LowPriorityIO</key>
   <true/>
   <key>ProgramArguments</key>
   <array>
-    <string>/Users/Stefan/bin/networkchange.sh</string>
+    <string>/Users/Shared/bin/networkchange.sh</string>
   </array>
   <key>WatchPaths</key>
   <array>
