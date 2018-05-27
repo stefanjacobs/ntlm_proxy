@@ -22,7 +22,7 @@ See [Windows](/windows) instructions.
 
 ## Mac Installation
 
-See [Mac](/mac) instructions (TODO).
+See [Mac](/mac) instructions.
 
 ## Linux Installation
 
