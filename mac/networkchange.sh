@@ -1,14 +1,18 @@
 #!/bin/bash
 
-# wait for network to fully come up - needed with macos? I am not sure?..
-sleep 5
+#switch to correct working dir
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+cd "${DIR}"
 
-# first restart squid
-brew services restart squid
+# give a hint that proxies are restarted
+/usr/bin/osascript -e 'display notification "Network change detected, restarting..." with title "Proxies"'
 
-# second restart cntlm
-brew services restart cntlm
+/usr/local/bin/brew services restart squid
+/usr/local/bin/brew services restart cntlm
 
-# inform user that action happened.
-osascript -e 'tell app "System Events" to display dialog "Restarted Proxies"'
-
+result=$?
+if [ "$result" -eq 0 ]; then
+  /usr/bin/osascript -e 'display notification "Restarting succeeded" with title "Proxies"'
+else
+  /usr/bin/osascript -e 'tell app "System Events" to display dialog "Proxy restarting failed -> '"${result//\"/}"' - (0) is success"'
+fi
